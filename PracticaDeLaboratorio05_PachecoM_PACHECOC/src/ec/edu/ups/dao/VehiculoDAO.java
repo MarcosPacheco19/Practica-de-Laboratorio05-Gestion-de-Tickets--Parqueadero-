@@ -5,46 +5,45 @@
  */
 package ec.edu.ups.dao;
 
-import ec.edu.ups.idao.IClienteDAO;
-import ec.edu.ups.modelo.Cliente;
+import ec.edu.ups.idao.IVehiculoDAO;
+import ec.edu.ups.modelo.Vehiculo;
 import java.util.List;
 
 /**
  *
  * @author xpacheco
  */
-public class ClienteDAO implements IClienteDAO {
+public class VehiculoDAO implements IVehiculoDAO{
 
     @Override
-    public void create(Cliente cliente) {
-        
+    public void create(Vehiculo vehiculo) {
         
     }
 
     
     @Override
-    public Cliente read(Cliente cliente) {
+    public Vehiculo read(String placa) {
         return null;
         
     }
 
     
     @Override
-    public void update(Cliente cliente) {
+    public void update(Vehiculo vehiculo) {
         
     }
 
     
     @Override
-    public void delete(Cliente cliente) {
+    public void delete(Vehiculo vehiculo) {
         
     }
 
     
     @Override
-    public List<Cliente> findAll() {
+    public List<Vehiculo> findAll() {
         return null;
         
     }
-    
+     
 }

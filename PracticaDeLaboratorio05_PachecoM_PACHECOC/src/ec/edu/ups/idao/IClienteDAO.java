@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface IClienteDAO {
     
+    //Metodos a Implementarse a ClienteDAO
     public void create(Cliente cliente);
     public Cliente read(Cliente cliente);
     public void update(Cliente cliente);
