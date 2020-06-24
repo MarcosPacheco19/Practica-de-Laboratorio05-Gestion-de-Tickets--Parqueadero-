@@ -19,7 +19,7 @@ public class Cliente {
     private String nombre;
     private String direccion;
     private String telefono;
-    private List<Vehiculo> autos;
+    private List<Vehiculo> vehiculo;
     
     //Constructores
 
@@ -31,7 +31,7 @@ public class Cliente {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.autos = autos;
+        this.vehiculo = autos;
     }
     
     //Getters and setters
@@ -69,11 +69,11 @@ public class Cliente {
     }
 
     public List<Vehiculo> getAutos() {
-        return autos;
+        return vehiculo;
     }
 
     public void setAutos(List<Vehiculo> autos) {
-        this.autos = autos;
+        this.vehiculo = autos;
     }
     
     
@@ -108,7 +108,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "cedula=" + cedula + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", autos=" + autos + '}';
+        return "Cliente{" + "cedula=" + cedula + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", vehiculo=" + vehiculo + '}';
     }
  
 }
