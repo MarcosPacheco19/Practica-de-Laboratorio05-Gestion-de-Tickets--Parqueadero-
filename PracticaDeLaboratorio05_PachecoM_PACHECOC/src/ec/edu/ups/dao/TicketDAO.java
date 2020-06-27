@@ -6,7 +6,9 @@
 package ec.edu.ups.dao;
 import ec.edu.ups.modelo.Ticket;
 import ec.edu.ups.idao.ITicketDAO;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -14,35 +16,41 @@ import java.util.List;
  */
 public class TicketDAO implements  ITicketDAO {
     
+    private Map<Integer, Ticket> tickets;
+    private int numero;
+
+    public TicketDAO() {
+        tickets = new HashMap<Integer, Ticket>();
+        numero = 0;
+    }
+
     @Override
-    
-    public void create(Ticket ticket){
-        
+    public void create(Ticket ticket) {
+        ticket.setNumero(++numero);
+        tickets.put(ticket.getNumero(), ticket);
     }
-    
-    @Override 
-    
-    public Ticket read(int numero ){
-        
-        return null;
-    }
-    
-    @Override 
-    
-    public void update(Ticket ticket){
-        
-    }
-    
-    @Override 
-    
-    public void delete(Ticket ticket){
-        
-    }
-    
+
     @Override
-    public List<Ticket>findAll(){
-        
-        return null;
-    } 
+    public Ticket read(int numero) {
+       return null;
+    }
+
+    @Override
+    public void update(Ticket ticket) {
+    
+    }
+
+    @Override
+    public void delete(Ticket ticket) {
+       
+    }
+
+    @Override
+    public Collection<Ticket> findAll() {
+        Collection<Ticket> tickets = this.tickets.values();
+        return tickets;
+    }
+
+   
     
 }

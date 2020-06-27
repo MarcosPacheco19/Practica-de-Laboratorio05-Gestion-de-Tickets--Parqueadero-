@@ -6,7 +6,7 @@
 package ec.edu.ups.idao;
 
 import ec.edu.ups.modelo.Cliente;
-import java.util.List;
+import java.util.Collection;
 
 /**
  *
@@ -19,5 +19,5 @@ public interface IClienteDAO {
     public Cliente read(Cliente cliente);
     public void update(Cliente cliente);
     public void delete(Cliente cliente);
-    public List<Cliente> findAll();
+    public Collection<Cliente> findAll(); 
 }

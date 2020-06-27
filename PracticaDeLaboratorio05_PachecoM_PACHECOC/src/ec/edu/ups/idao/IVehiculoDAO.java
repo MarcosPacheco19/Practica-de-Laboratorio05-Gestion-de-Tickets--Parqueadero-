@@ -6,7 +6,7 @@
 package ec.edu.ups.idao;
 
 import ec.edu.ups.modelo.Vehiculo;
-import java.util.List;
+import java.util.Collection;
 
 /**
  *
@@ -19,6 +19,6 @@ public interface IVehiculoDAO {
     public Vehiculo read(String placa);
     public void update(Vehiculo vehiculo);
     public void delete(Vehiculo vehiculo);
-    public List<Vehiculo> findAll();  
+    public Collection<Vehiculo> findAll();  
     
 }
