@@ -51,6 +51,10 @@ public class TicketDAO implements  ITicketDAO {
         return tickets;
     }
 
-   
-    
+    @Override
+    public int obtenerUltimoNumero() {
+        
+        return numero;
+    }
+  
 }

@@ -17,15 +17,18 @@ public class Vehiculo {
     private String placa;
     private String modelo;
     private String marca;
+    private String cliente;
     
     //Constructores
     public Vehiculo() {
     }
 
-    public Vehiculo(String placa, String modelo, String marca) {
+    public Vehiculo(String placa, String modelo, String marca, String cliente) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
+        this.cliente = cliente;
+        
     }
     
     //Getters y setters

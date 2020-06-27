@@ -16,7 +16,7 @@ public interface IClienteDAO {
     
     //Metodos a Implementarse a ClienteDAO
     public void create(Cliente cliente);
-    public Cliente read(Cliente cliente);
+    public Cliente read(String cedula);
     public void update(Cliente cliente);
     public void delete(Cliente cliente);
     public Collection<Cliente> findAll(); 

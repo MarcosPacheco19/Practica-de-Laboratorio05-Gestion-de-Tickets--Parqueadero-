@@ -31,7 +31,7 @@ public class ClienteDAO implements IClienteDAO {
 
     
     @Override
-    public Cliente read(Cliente cedula) {
+    public Cliente read(String cedula) {
         return clientes.get(cedula);
         
     }

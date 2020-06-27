@@ -19,17 +19,26 @@ public class Ticket {
     private double total;
     private Vehiculo vehiculo;
 
-    public Ticket(int numero, Date fEntrada, Date fSalida, double total, Vehiculo vehiculo) {
-        this.numero = numero;
-        this.fEntrada = fEntrada;
-        this.fSalida = fSalida;
-        this.total = total;
+    //Constructores
+    public Ticket(Date fechaEntrada, Vehiculo vehiculo) {
+        this.fEntrada = fechaEntrada;
         this.vehiculo = vehiculo;
     }
     
-    public Ticket() {
+    public Ticket(int numero, Date fechaEntrada, Date fechaSalida, double total) {
+        this.numero = numero;
+        this.fEntrada = fechaEntrada;
+        this.fSalida = fechaSalida;
+        this.total = total;
     }
-
+    
+    public Ticket() {
+        
+    }
+    
+    
+    
+    //Getters y Setters
     public int getNumero() {
         return numero;
     }

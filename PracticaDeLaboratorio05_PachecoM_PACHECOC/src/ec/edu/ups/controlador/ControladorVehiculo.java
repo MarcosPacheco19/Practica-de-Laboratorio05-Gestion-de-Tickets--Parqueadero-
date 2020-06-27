@@ -5,10 +5,41 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.idao.IVehiculoDAO;
+import ec.edu.ups.modelo.Cliente;
+import ec.edu.ups.modelo.Vehiculo;
+import java.util.Collection;
+
 /**
  *
  * @author xpacheco
  */
 public class ControladorVehiculo {
     
+    private IVehiculoDAO vehiculoDAO;
+    private ControladorCliente controladorCliente;
+    private Cliente cliente;
+    private Vehiculo vehiculo;
+
+    public ControladorVehiculo(IVehiculoDAO vehiculoDAO, ControladorCliente controladorCliente) {
+        this.vehiculoDAO = vehiculoDAO;
+        this.controladorCliente = controladorCliente;
+    }
+    
+    public void crear(String placa, String marca, String modelo, String cliente) {
+        vehiculo = new Vehiculo(placa, marca, modelo, cliente);
+        vehiculoDAO.create(vehiculo);
+        this.cliente = controladorCliente.buscar(cliente);
+        this.cliente.agregarVehiculo(vehiculo);
+        controladorCliente.actualizar(this.cliente);
+        
+    }
+    
+    public Vehiculo buscar(String placa) {
+        return vehiculoDAO.read(placa);
+    }
+    
+    public Collection<Vehiculo> listar() {
+        return vehiculoDAO.findAll();
+    }
 }

@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,19 +20,20 @@ public class Cliente {
     private String nombre;
     private String direccion;
     private String telefono;
-    private List<Vehiculo> vehiculo;
+    private List<Vehiculo> transporte;
     
     //Constructores
 
     public Cliente() {
     }
 
-    public Cliente(String cedula, String nombre, String direccion, String telefono, List<Vehiculo> autos) {
+    public Cliente(String cedula, String nombre, String direccion, String telefono) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.vehiculo = autos;
+        transporte = new ArrayList<Vehiculo>();
+        
     }
     
     //Getters and setters
@@ -68,12 +70,16 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public List<Vehiculo> getAutos() {
-        return vehiculo;
+    public List<Vehiculo> getVehiculos() {
+        return transporte;
     }
 
-    public void setAutos(List<Vehiculo> autos) {
-        this.vehiculo = autos;
+    public void setVehiculos(List<Vehiculo> transporte) {
+        this.transporte = transporte;
+    }
+    
+    public void agregarVehiculo(Vehiculo vehiculo) {
+        transporte.add(vehiculo);
     }
     
     
@@ -108,7 +114,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "cedula=" + cedula + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", vehiculo=" + vehiculo + '}';
+        return "Cliente{" + "cedula=" + cedula + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", vehiculo=" + transporte + '}';
     }
  
 }

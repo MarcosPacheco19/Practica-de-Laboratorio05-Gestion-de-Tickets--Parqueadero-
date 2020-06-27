@@ -17,5 +17,6 @@ public interface ITicketDAO {
     public void update(Ticket ticket);
     public void delete(Ticket ticket);
     public Collection<Ticket> findAll(); 
+    public int obtenerUltimoNumero();
   
 }
