@@ -5,17 +5,61 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorCliente;
+import ec.edu.ups.controlador.ControladorTickets;
+import ec.edu.ups.controlador.ControladorVehiculo;
+import ec.edu.ups.dao.ClienteDAO;
+import ec.edu.ups.dao.TicketDAO;
+import ec.edu.ups.dao.VehiculoDAO;
+import ec.edu.ups.idao.IClienteDAO;
+import ec.edu.ups.idao.ITicketDAO;
+import ec.edu.ups.idao.IVehiculoDAO;
+
 /**
  *
  * @author xpacheco
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    
+    //Ventanas
+    private VentanaListarTickets ventanaListarTickets;
+    private VentanaRegistroDeEntrada ventanaRegistroDeEntrada;
+    private VentanaRegistroDeSalida ventanaRegistroDeSalida;
+
+    //Daos
+    private IClienteDAO clienteDAO;
+    private IVehiculoDAO vehiculoDAO;
+    private ITicketDAO ticketDAO;
+
+    //Controladores
+    private ControladorCliente controladorCliente;
+    private ControladorVehiculo controladorVehiculo;
+    private ControladorTickets controladorTicket;
+
+    
+    
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        
+        //Instanciamos los Daos
+        IClienteDAO clienteDAO = new ClienteDAO();
+        vehiculoDAO = new VehiculoDAO();
+        ticketDAO = new TicketDAO();
+
+        //Instanciamos los Controladores
+        controladorCliente = new ControladorCliente(clienteDAO);
+        controladorVehiculo = new ControladorVehiculo(vehiculoDAO, controladorCliente);
+        controladorTicket = new ControladorTickets(ticketDAO);
+
+        //Ventanas
+        ventanaListarTickets = new VentanaListarTickets(controladorTicket);
+        ventanaRegistroDeEntrada = new VentanaRegistroDeEntrada(controladorCliente, controladorTicket, controladorVehiculo);
+        ventanaRegistroDeSalida = new VentanaRegistroDeSalida(controladorTicket);
+
     }
 
     /**
@@ -29,20 +73,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        menuInicio = new javax.swing.JMenu();
+        menuItemIniciarSesion = new javax.swing.JMenuItem();
+        menuItemCerrarSesion = new javax.swing.JMenuItem();
+        menuRegistros = new javax.swing.JMenu();
+        menuItemClientes = new javax.swing.JMenuItem();
+        menuItemVehiculos = new javax.swing.JMenuItem();
+        menuItemTickets = new javax.swing.JMenuItem();
+        menuIdioma = new javax.swing.JMenu();
+        menuItemEspañol = new javax.swing.JMenuItem();
+        menuItemIngles = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(java.awt.Color.cyan);
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,38 +99,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 278, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Inicio");
+        menuInicio.setText("Inicio");
 
-        jMenuItem1.setText("Iniciar Sesion");
-        jMenu1.add(jMenuItem1);
+        menuItemIniciarSesion.setText("Iniciar Sesion");
+        menuInicio.add(menuItemIniciarSesion);
 
-        jMenuItem2.setText("Cerrar Sesion");
-        jMenu1.add(jMenuItem2);
+        menuItemCerrarSesion.setText("Cerrar Sesion");
+        menuInicio.add(menuItemCerrarSesion);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuInicio);
 
-        jMenu2.setText("Registros");
+        menuRegistros.setText("Registros");
 
-        jMenuItem3.setText("Clientes");
-        jMenu2.add(jMenuItem3);
+        menuItemClientes.setText("Clientes");
+        menuRegistros.add(menuItemClientes);
 
-        jMenuItem4.setText("Vehiculos");
-        jMenu2.add(jMenuItem4);
+        menuItemVehiculos.setText("Vehiculos");
+        menuRegistros.add(menuItemVehiculos);
 
-        jMenuItem5.setText("Tickets");
-        jMenu2.add(jMenuItem5);
+        menuItemTickets.setText("Tickets");
+        menuRegistros.add(menuItemTickets);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuRegistros);
 
-        jMenu3.setText("Idioma");
+        menuIdioma.setText("Idioma");
 
-        jMenuItem6.setText("Español");
-        jMenu3.add(jMenuItem6);
+        menuItemEspañol.setText("Español");
+        menuIdioma.add(menuItemEspañol);
 
-        jMenuItem7.setText("Ingles");
-        jMenu3.add(jMenuItem7);
+        menuItemIngles.setText("Ingles");
+        menuIdioma.add(menuItemIngles);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuIdioma);
 
         setJMenuBar(jMenuBar1);
 
@@ -140,17 +184,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu menuIdioma;
+    private javax.swing.JMenu menuInicio;
+    private javax.swing.JMenuItem menuItemCerrarSesion;
+    private javax.swing.JMenuItem menuItemClientes;
+    private javax.swing.JMenuItem menuItemEspañol;
+    private javax.swing.JMenuItem menuItemIngles;
+    private javax.swing.JMenuItem menuItemIniciarSesion;
+    private javax.swing.JMenuItem menuItemTickets;
+    private javax.swing.JMenuItem menuItemVehiculos;
+    private javax.swing.JMenu menuRegistros;
     // End of variables declaration//GEN-END:variables
 }

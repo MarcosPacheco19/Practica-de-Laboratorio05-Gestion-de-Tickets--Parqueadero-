@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.modelo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -14,18 +15,18 @@ import java.util.Date;
 public class Ticket {
     
     private int numero;
-    private Date fEntrada;
-    private Date fSalida;
+     private LocalDateTime fEntrada;
+    private LocalDateTime fSalida;
     private double total;
     private Vehiculo vehiculo;
 
     //Constructores
-    public Ticket(Date fechaEntrada, Vehiculo vehiculo) {
+    public Ticket(LocalDateTime fechaEntrada, Vehiculo vehiculo) {
         this.fEntrada = fechaEntrada;
         this.vehiculo = vehiculo;
     }
     
-    public Ticket(int numero, Date fechaEntrada, Date fechaSalida, double total) {
+    public Ticket(int numero, LocalDateTime fechaEntrada, LocalDateTime fechaSalida, double total) {
         this.numero = numero;
         this.fEntrada = fechaEntrada;
         this.fSalida = fechaSalida;
@@ -47,21 +48,22 @@ public class Ticket {
         this.numero = numero;
     }
 
-    public Date getfEntrada() {
+    public LocalDateTime getfEntrada() {
         return fEntrada;
     }
 
-    public void setfEntrada(Date fEntrada) {
+    public void setfEntrada(LocalDateTime fEntrada) {
         this.fEntrada = fEntrada;
     }
 
-    public Date getfSalida() {
+    public LocalDateTime getfSalida() {
         return fSalida;
     }
 
-    public void setfSalida(Date fSalida) {
+    public void setfSalida(LocalDateTime fSalida) {
         this.fSalida = fSalida;
     }
+
 
     public double getTotal() {
         return total;

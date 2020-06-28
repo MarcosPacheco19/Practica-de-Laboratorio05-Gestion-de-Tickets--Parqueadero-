@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.idao;
 import ec.edu.ups.modelo.Ticket;
+import java.time.LocalDateTime;
 import java.util.Collection;
 /**
  *
@@ -18,5 +19,6 @@ public interface ITicketDAO {
     public void delete(Ticket ticket);
     public Collection<Ticket> findAll(); 
     public int obtenerUltimoNumero();
+    public LocalDateTime obtenerFechaACtual();
   
 }
