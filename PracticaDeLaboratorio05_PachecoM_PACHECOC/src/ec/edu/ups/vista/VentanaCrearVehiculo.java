@@ -5,17 +5,39 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorCliente;
+import ec.edu.ups.controlador.ControladorVehiculo;
+
 /**
  *
  * @author linar
  */
 public class VentanaCrearVehiculo extends javax.swing.JFrame {
 
+
+    //VentanaPrincipal
+    VentanaRegistroDeEntrada ventanaRegistroDeEntrada;
+    
+    //Controladores
+    private ControladorCliente controladorCliente;
+    private ControladorVehiculo controladorVehiculo;
+    
+    
     /**
      * Creates new form VentanaCrearVehiculo
      */
-    public VentanaCrearVehiculo() {
+    public VentanaCrearVehiculo(VentanaRegistroDeEntrada ventanaRegistroDeEntrada,
+            ControladorVehiculo controladorVehiculo, ControladorCliente controladorCliente) {
+        
+        
         initComponents();
+        
+        //Ventana
+        this.ventanaRegistroDeEntrada = ventanaRegistroDeEntrada;
+
+        //Controladores
+        this.controladorCliente = controladorCliente;
+        this.controladorVehiculo = controladorVehiculo;
     }
 
     /**

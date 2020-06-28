@@ -5,17 +5,32 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorCliente;
+
 /**
  *
  * @author xpacheco
  */
 public class VentanaCrearCliente extends javax.swing.JFrame {
 
+
+     //VentanaPrincipal
+    VentanaRegistroDeEntrada ventanaRegistroDeEntrada;
+    
+    //Controlador de Clientes
+    private ControladorCliente controladorCliente;
     /**
      * Creates new form VentanaCrearCliente
      */
-    public VentanaCrearCliente() {
+    public VentanaCrearCliente(VentanaRegistroDeEntrada ventanaRegistroDeEntrada, ControladorCliente controladorCliente) {
+        
         initComponents();
+        
+         //Ventana
+        this.ventanaRegistroDeEntrada = ventanaRegistroDeEntrada;
+        
+        //Controlador
+        this.controladorCliente = controladorCliente;
     }
 
     /**

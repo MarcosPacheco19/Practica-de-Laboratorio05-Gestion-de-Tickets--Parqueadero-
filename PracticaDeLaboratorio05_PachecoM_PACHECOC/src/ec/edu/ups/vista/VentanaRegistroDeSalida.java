@@ -5,17 +5,27 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorTickets;
+
 /**
  *
  * @author xpacheco
  */
 public class VentanaRegistroDeSalida extends javax.swing.JFrame {
 
+    private ControladorTickets controladorTicket;
+    
+    
+    
     /**
      * Creates new form VentanaRegistroDeSalida
      */
-    public VentanaRegistroDeSalida() {
+    public VentanaRegistroDeSalida(ControladorTickets controladorTicket) {
+        
         initComponents();
+        
+         //Controlador
+        this.controladorTicket = controladorTicket;
     }
 
     /**
@@ -33,11 +43,11 @@ public class VentanaRegistroDeSalida extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 436, Short.MAX_VALUE)
         );
 
         pack();
