@@ -15,10 +15,11 @@ import java.util.Date;
 public class Ticket {
     
     private int numero;
-     private LocalDateTime fEntrada;
+    private LocalDateTime fEntrada;
     private LocalDateTime fSalida;
     private double total;
     private Vehiculo vehiculo;
+    private int fracciones;
 
     //Constructores
     public Ticket(LocalDateTime fechaEntrada, Vehiculo vehiculo) {
@@ -55,6 +56,14 @@ public class Ticket {
     public void setfEntrada(LocalDateTime fEntrada) {
         this.fEntrada = fEntrada;
     }
+    
+     public String getFechaSalida() {
+        if (fSalida == null) {
+            return "";
+        } else {
+            return fSalida.toString();
+        }
+    }
 
     public LocalDateTime getfSalida() {
         return fSalida;
@@ -81,6 +90,17 @@ public class Ticket {
         this.vehiculo = vehiculo;
     }
 
+    public int getFracciones() {
+        return fracciones;
+    }
+
+    public void setFracciones(int fracciones) {
+        this.fracciones = fracciones;
+    }
+    
+    
+    //hashcode y equals
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -106,4 +126,52 @@ public class Ticket {
         return true;
     }
     
+    
+    //metodos para mostrar la fecha
+    
+    public String calcularTiempo() {
+        int dias = (fSalida.getMonth().length(esAñoBisiesto(fSalida.getYear()))) - (fEntrada.getMonth().length(esAñoBisiesto(fEntrada.getYear())));
+        int horas = fSalida.getHour() - fEntrada.getHour();
+        int minutos = fSalida.getMinute() - fEntrada.getMinute();
+        int segundos = fSalida.getSecond() - fEntrada.getSecond();
+        
+        if (segundos < 0) {
+            --minutos;
+            segundos += 60;
+            
+        }
+        if (minutos < 0) {
+            --horas;
+            minutos += 60;
+            
+        }
+        if (horas < 0) {
+            --dias;
+            horas += 24;
+        }
+        
+        minutos += (dias * 1440) + (horas * 60);
+        fracciones = 1 + (minutos/10);
+        total = Double.valueOf(fracciones + "") * 0.25;
+        
+        if (dias > 0) {
+            return dias + "dias, " + horas + "horas, " + minutos + "minutos, " + segundos + "segundos.";
+            
+        } else if (horas > 0) {
+            return horas + "horas, " + minutos + "minutos, " + segundos + "segundos.";
+            
+        } else {
+            return minutos + "minutos, " + segundos + "segundos."; 
+        }
+    }
+
+    public boolean esAñoBisiesto(int año) {
+        if ((año % 4 == 0) && ((año % 100 != 0) || (año % 400 == 0))) {
+            return true;
+            
+        } else {
+            return false;
+            
+        }
+    }
 }

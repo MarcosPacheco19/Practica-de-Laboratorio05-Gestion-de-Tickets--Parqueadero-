@@ -17,13 +17,13 @@ public class Vehiculo {
     private String placa;
     private String modelo;
     private String marca;
-    private String cliente;
+    private Cliente cliente;
     
     //Constructores
     public Vehiculo() {
     }
 
-    public Vehiculo(String placa, String modelo, String marca, String cliente) {
+    public Vehiculo(String placa, String modelo, String marca, Cliente cliente) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
@@ -57,14 +57,15 @@ public class Vehiculo {
         this.marca = marca;
     }
 
-    public String getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(String cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
+
     
     
     //hashcode y equals
@@ -98,7 +99,7 @@ public class Vehiculo {
     //toString
     @Override
     public String toString() {
-        return "Vehiculo{" + "placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + '}';
+        return placa;
     }
             
 }

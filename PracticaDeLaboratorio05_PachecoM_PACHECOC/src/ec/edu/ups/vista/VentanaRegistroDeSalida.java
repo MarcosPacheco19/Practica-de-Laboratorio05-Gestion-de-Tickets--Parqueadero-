@@ -6,6 +6,11 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorTickets;
+import ec.edu.ups.modelo.Cliente;
+import ec.edu.ups.modelo.Ticket;
+import ec.edu.ups.modelo.Vehiculo;
+import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,6 +60,20 @@ public class VentanaRegistroDeSalida extends javax.swing.JFrame {
         txtnombre = new javax.swing.JTextField();
         txttelefono = new javax.swing.JTextField();
         txtdireccion = new javax.swing.JTextField();
+        LnumeroDeTicket = new javax.swing.JLabel();
+        LnumeroFracciones = new javax.swing.JLabel();
+        LfechaSalida = new javax.swing.JLabel();
+        LfechaEntrada = new javax.swing.JLabel();
+        Ltiempo = new javax.swing.JLabel();
+        txtnumeroDeTicket = new javax.swing.JTextField();
+        txtnumeroFracciones = new javax.swing.JTextField();
+        txtFechaEntrada = new javax.swing.JTextField();
+        txtfechaSalida = new javax.swing.JTextField();
+        txttiempo = new javax.swing.JTextField();
+        Ltotal = new javax.swing.JLabel();
+        txttotal = new javax.swing.JTextField();
+        btlimpiar = new javax.swing.JButton();
+        btcalcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,7 +166,7 @@ public class VentanaRegistroDeSalida extends javax.swing.JFrame {
                         .addComponent(Ldireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpanelClienteLayout.setVerticalGroup(
             jpanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,17 +195,87 @@ public class VentanaRegistroDeSalida extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
+        LnumeroDeTicket.setText("Numero de ticket :");
+
+        LnumeroFracciones.setText("Numero de Fracciones:");
+
+        LfechaSalida.setText("Fecha Salida:");
+
+        LfechaEntrada.setText("Fecha Entrada:");
+
+        Ltiempo.setText("Tiempo:");
+
+        Ltotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Ltotal.setText("Total:");
+
+        txttotal.setText("0.00");
+
+        btlimpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btlimpiar.setText("Limpiar");
+        btlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlimpiarActionPerformed(evt);
+            }
+        });
+
+        btcalcular.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btcalcular.setText("Calcular");
+        btcalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btcalcularActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(LregistroSalida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpanelCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpanelVehiculo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LregistroSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpanelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jpanelVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(LfechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtFechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(LnumeroDeTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtnumeroDeTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(LnumeroFracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtnumeroFracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Ltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txttiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(LfechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtfechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(btlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btcalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addComponent(Ltotal, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +286,38 @@ public class VentanaRegistroDeSalida extends javax.swing.JFrame {
                 .addComponent(jpanelVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LnumeroDeTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LnumeroFracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtnumeroFracciones))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(txtnumeroDeTicket)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LfechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaEntrada)
+                    .addComponent(txttiempo))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LfechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtfechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btcalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Ltotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,26 +334,107 @@ public class VentanaRegistroDeSalida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btcalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcalcularActionPerformed
+        
+        //obtenemos el ticket que tiene por numero lo ingresado por el usuario
+        try {
+            Ticket ticket = controladorTicket.buscar(Integer.valueOf(txtnumeroDeTicket.getText()));
+            if (ticket != null) {
+                //obtenemos la hora actual
+                txtfechaSalida.setText(controladorTicket.obtenerFechaActual().toString());
+                
+                //agregamos la fecha de salida al ticket
+                ticket.setfSalida(LocalDateTime.parse(txtfechaSalida.getText()));
 
+                //obtenemos el total y lo mostramos en los textField
+                txttiempo.setText(ticket.calcularTiempo());
+                txtnumeroFracciones.setText(String.valueOf(ticket.getFracciones()));
+                txttotal.setText(String.valueOf(ticket.getTotal()));
+
+                //llenamos los datos relacionamos al ticket
+                Vehiculo vehiculo = ticket.getVehiculo();
+                Cliente cliente = vehiculo.getCliente();
+
+                txtcedula.setText(cliente.getCedula());
+                txtdireccion.setText(cliente.getDireccion());
+                txtFechaEntrada.setText(ticket.getfEntrada().toString());
+                txtmarca.setText(vehiculo.getMarca());
+                txtmodelo.setText(vehiculo.getModelo());
+                txtnombre.setText(cliente.getNombre());
+                txtplaca.setText(vehiculo.getPlaca());
+                txttelefono.setText(cliente.getTelefono());
+                JOptionPane.showMessageDialog(this, "Registro de salida correcto " + "\nHora de Salida: " + txtfechaSalida.getText().toString());
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No existe ningun ticket relacionado con ese numero");
+                txtnumeroDeTicket.setText("");
+                
+            }
+        } catch (NumberFormatException excepcion) {
+            JOptionPane.showMessageDialog(this, "No existe ningun ticket relacionado con ese numero");
+            txtnumeroDeTicket.setText("");
+            
+        }
+
+    }//GEN-LAST:event_btcalcularActionPerformed
+
+    private void btlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlimpiarActionPerformed
+      
+        limpiar();
+    }//GEN-LAST:event_btlimpiarActionPerformed
+
+
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {                                            
+        limpiar();
+        
+    }     
+    
+    public void limpiar() {
+        txtcedula.setText("");
+        txtdireccion.setText("");
+        txtFechaEntrada.setText("");
+        txtfechaSalida.setText("");
+        txtmarca.setText("");
+        txtmodelo.setText("");
+        txtnombre.setText("");
+        txtplaca.setText("");
+        txttelefono.setText("");
+        txtnumeroDeTicket.setText("");
+        txttotal.setText("0.0");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Lcedula;
     private javax.swing.JLabel Ldireccion;
+    private javax.swing.JLabel LfechaEntrada;
+    private javax.swing.JLabel LfechaSalida;
     private javax.swing.JLabel Lmarca;
     private javax.swing.JLabel Lmodelo;
     private javax.swing.JLabel Lnombre;
+    private javax.swing.JLabel LnumeroDeTicket;
+    private javax.swing.JLabel LnumeroFracciones;
     private javax.swing.JLabel Lplaca;
     private javax.swing.JLabel LregistroSalida;
     private javax.swing.JLabel Ltelefono;
+    private javax.swing.JLabel Ltiempo;
+    private javax.swing.JLabel Ltotal;
+    private javax.swing.JButton btcalcular;
+    private javax.swing.JButton btlimpiar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jpanelCliente;
     private javax.swing.JPanel jpanelVehiculo;
+    private javax.swing.JTextField txtFechaEntrada;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtdireccion;
+    private javax.swing.JTextField txtfechaSalida;
     private javax.swing.JTextField txtmarca;
     private javax.swing.JTextField txtmodelo;
     private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtnumeroDeTicket;
+    private javax.swing.JTextField txtnumeroFracciones;
     private javax.swing.JTextField txtplaca;
     private javax.swing.JTextField txttelefono;
+    private javax.swing.JTextField txttiempo;
+    private javax.swing.JTextField txttotal;
     // End of variables declaration//GEN-END:variables
 }

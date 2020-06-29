@@ -7,6 +7,10 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorCliente;
 import ec.edu.ups.controlador.ControladorVehiculo;
+import ec.edu.ups.modelo.Cliente;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +25,9 @@ public class VentanaCrearVehiculo extends javax.swing.JFrame {
     //Controladores
     private ControladorCliente controladorCliente;
     private ControladorVehiculo controladorVehiculo;
+    //idioma
+    private Locale localizacion;
+    private ResourceBundle mensajes;
     
     
     /**
@@ -39,6 +46,35 @@ public class VentanaCrearVehiculo extends javax.swing.JFrame {
         this.controladorCliente = controladorCliente;
         this.controladorVehiculo = controladorVehiculo;
     }
+    
+    
+    
+     public Locale getLocalizacion() {
+        return localizacion;
+    }
+
+    public void setLocalizacion(Locale localizacion) {
+        this.localizacion = localizacion;
+    }
+
+    public ResourceBundle getMensajes() {
+        return mensajes;
+    }
+
+    public void setMensaje(ResourceBundle mensaje) {
+        this.mensajes = mensajes;
+    }
+public void cambiarIdioma(String idioma, String localizacion){
+     Lmarca.setText(mensajes.getString("marca"));
+     Lmodelo.setText(mensajes.getString("modelo"));
+     Lcliente.setText(mensajes.getString("clienteVS"));
+     Lplaca.setText(mensajes.getString("placa"));
+     Ltitulo.setText(mensajes.getString("tituloVC"));
+     btnuevo.setText(mensajes.getString("botonCrear"));
+     btcancelar.setText(mensajes.getString("cancelar"));
+     btregistrar.setText(mensajes.getString("registrarVehiculo"));
+     txtcliente.setText(mensajes.getString("elegirCliente"));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,39 +85,44 @@ public class VentanaCrearVehiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Ltitulo = new javax.swing.JLabel();
+        Lplaca = new javax.swing.JLabel();
+        Lmarca = new javax.swing.JLabel();
+        Lmodelo = new javax.swing.JLabel();
+        Lcliente = new javax.swing.JLabel();
+        txtplaca = new javax.swing.JTextField();
+        txtmarca = new javax.swing.JTextField();
+        txtmodelo = new javax.swing.JTextField();
+        btnuevo = new javax.swing.JButton();
+        btregistrar = new javax.swing.JButton();
+        btcancelar = new javax.swing.JButton();
+        txtcliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("Ingresar Vehiculo");
+        Ltitulo.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        Ltitulo.setText("Ingresar Vehiculo");
 
-        jLabel2.setText("Placa");
+        Lplaca.setText("Placa");
 
-        jLabel3.setText("Marca");
+        Lmarca.setText("Marca");
 
-        jLabel4.setText("Modelo");
+        Lmodelo.setText("Modelo");
 
-        jLabel5.setText("Cliente");
+        Lcliente.setText("Cliente");
 
-        jButton1.setText("Buscar");
+        btnuevo.setText("Nuevo Cliente");
 
-        jButton2.setText("Nuevo");
+        btregistrar.setText("Registrar");
+        btregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btregistrarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Registrar");
+        btcancelar.setText("Cancelar");
 
-        jButton4.setText("Cancelar");
+        txtcliente.setText("Buscar cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,78 +131,111 @@ public class VentanaCrearVehiculo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Lmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Lplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Lcliente)
+                                .addComponent(Lmodelo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtmarca, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(txtplaca)
+                                    .addComponent(txtmodelo))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtcliente, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnuevo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(88, 88, 88)
-                .addComponent(jButton3)
+                .addComponent(btregistrar)
                 .addGap(65, 65, 65)
-                .addComponent(jButton4)
+                .addComponent(btcancelar)
                 .addGap(0, 95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(Ltitulo)
                 .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel1)
+                .addComponent(Ltitulo)
                 .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(txtplaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lplaca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Lmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Lmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(Lcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btregistrar)
+                    .addComponent(btcancelar))
                 .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void btregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btregistrarActionPerformed
+         if (txtplaca.getText().equals("") || txtmarca.getText().equals("")
+                || txtmodelo.getText().equals("") || txtcliente.getText().equals("Buscar Cliente")) {
+            JOptionPane.showMessageDialog(this, "Faltan datos por ingresar");
+            
+        } else {
+            Cliente cliente = controladorCliente.buscar(txtcliente.getText());
+            controladorVehiculo.crear(txtplaca.getText(), txtmarca.getText(), txtmodelo.getText(), cliente);
+            ventanaRegistroDeEntrada.cargarDatosCliente(cliente);
+            ventanaRegistroDeEntrada.cargarDatosTablaVehiculos();
+            ventanaRegistroDeEntrada.getjTextFieldPlaca().setText(txtplaca.getText());
+            limpiar();
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btregistrarActionPerformed
+
+    public void limpiar() {
+        txtcliente.setText("Seleccione un Cliente");
+        txtmarca.setText("");
+        txtmodelo.setText("");
+        txtplaca.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel Lcliente;
+    private javax.swing.JLabel Lmarca;
+    private javax.swing.JLabel Lmodelo;
+    private javax.swing.JLabel Lplaca;
+    private javax.swing.JLabel Ltitulo;
+    private javax.swing.JButton btcancelar;
+    private javax.swing.JButton btnuevo;
+    private javax.swing.JButton btregistrar;
+    private javax.swing.JTextField txtcliente;
+    private javax.swing.JTextField txtmarca;
+    private javax.swing.JTextField txtmodelo;
+    private javax.swing.JTextField txtplaca;
     // End of variables declaration//GEN-END:variables
 }
