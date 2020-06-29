@@ -14,6 +14,8 @@ import ec.edu.ups.dao.VehiculoDAO;
 import ec.edu.ups.idao.IClienteDAO;
 import ec.edu.ups.idao.ITicketDAO;
 import ec.edu.ups.idao.IVehiculoDAO;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -22,10 +24,12 @@ import ec.edu.ups.idao.IVehiculoDAO;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     
-    //Ventanas
+        //Ventanas
     private VentanaListarTickets ventanaListarTickets;
     private VentanaRegistroDeEntrada ventanaRegistroDeEntrada;
     private VentanaRegistroDeSalida ventanaRegistroDeSalida;
+    private VentanaCrearVehiculo ventanaCrearVehiculo;
+    private VentanaCrearCliente ventanaCrearCliente;
 
     //Daos
     private IClienteDAO clienteDAO;
@@ -36,7 +40,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorCliente controladorCliente;
     private ControladorVehiculo controladorVehiculo;
     private ControladorTickets controladorTicket;
-
+    //idioma
+    //localizacion
+    private Locale localizacion;
+    private ResourceBundle mensajes;
     
     
     /**
@@ -45,8 +52,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         
-        //Instanciamos los Daos
-        IClienteDAO clienteDAO = new ClienteDAO();
+       //Instanciamos los Daos
+        clienteDAO = new ClienteDAO();
         vehiculoDAO = new VehiculoDAO();
         ticketDAO = new TicketDAO();
 
@@ -59,9 +66,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaListarTickets = new VentanaListarTickets(controladorTicket);
         ventanaRegistroDeEntrada = new VentanaRegistroDeEntrada(controladorCliente, controladorTicket, controladorVehiculo);
         ventanaRegistroDeSalida = new VentanaRegistroDeSalida(controladorTicket);
+        ventanaCrearVehiculo = new VentanaCrearVehiculo(ventanaRegistroDeEntrada, controladorVehiculo, controladorCliente);
+        ventanaCrearCliente= new VentanaCrearCliente(ventanaRegistroDeEntrada, controladorCliente);
+
+        //Agregar las ventanas internas
+        jPanel1.add(ventanaListarTickets);
+        jPanel1.add(ventanaRegistroDeEntrada);
+        jPanel1.add(ventanaRegistroDeSalida);
+        
+        //mensajes
+        localizacion = new Locale("es", "EC");
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensajes", localizacion);
 
     }
-
+    
+    public void cambiarIdioma(String idioma, String localidad) {
+        localizacion = new Locale(idioma, localidad);
+       mensajes = ResourceBundle.getBundle("ec.edu.ups.idioma.mensajes",localizacion);
+    btListarTickets.setText(mensajes.getString("listarTickets"));
+    btRegistrarEntrada.setText(mensajes.getString("registrarEntrada"));
+    btRegistrarSalida.setText(mensajes.getString("registrarSalida"));
+    menuIdioma.setText(mensajes.getString("idioma"));
+    menuInicio.setText(mensajes.getString("inicio"));
+    menuItemCerrarSesion.setText(mensajes.getString("cerrar"));
+    menuItemClientes.setText(mensajes.getString("clientes"));
+    menuItemEspañol.setText(mensajes.getString("español"));
+    menuItemIngles.setText(mensajes.getString("ingles"));
+    menuItemIniciarSesion.setText(mensajes.getString("iniciarSesion"));
+    menuItemTickets.setText(mensajes.getString("tickets"));
+    menuItemVehiculos.setText(mensajes.getString("vehiculos"));
+    menuRegistros.setText(mensajes.getString("registro"));
+    
+    if(ventanaRegistroDeEntrada  != null ){
+    ventanaRegistroDeEntrada.setMensajes(mensajes);
+    ventanaRegistroDeEntrada.cambiarIdioma(idioma, localidad);
+    ventanaRegistroDeSalida.setMensajes(mensajes);
+    ventanaRegistroDeSalida.cambiarIdioma(idioma, localidad);
+    ventanaListarTickets.setMensajes(mensajes);
+    ventanaListarTickets.cambiarIdioma(idioma, localidad);
+    ventanaCrearVehiculo.setMensajes(mensajes);
+    ventanaCrearVehiculo.cambiarIdioma(idioma, localidad);
+    ventanaCrearCliente.setMensajes(mensajes);
+    ventanaCrearCliente.cambiarIdioma(idioma, localidad);
+   
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

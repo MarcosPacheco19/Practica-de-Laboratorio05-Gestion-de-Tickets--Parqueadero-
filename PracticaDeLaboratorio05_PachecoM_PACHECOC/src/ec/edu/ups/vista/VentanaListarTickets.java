@@ -42,12 +42,12 @@ public class VentanaListarTickets extends javax.swing.JFrame {
         this.localizacion = localizacion;
     }
 
-    public ResourceBundle getMensaje() {
+    public ResourceBundle getMensajes() {
         return mensajes;
     }
 
-    public void setMensaje(ResourceBundle mensaje) {
-        this.mensajes = mensaje;
+    public void setMensajes(ResourceBundle mensajes) {
+        this.mensajes = mensajes;
     }
      public void cambiarIdioma(String idioma, String localizacion){
          

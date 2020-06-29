@@ -61,10 +61,11 @@ public class VentanaCrearVehiculo extends javax.swing.JFrame {
         return mensajes;
     }
 
-    public void setMensaje(ResourceBundle mensaje) {
+    public void setMensajes(ResourceBundle mensajes) {
         this.mensajes = mensajes;
     }
-public void cambiarIdioma(String idioma, String localizacion){
+    
+    public void cambiarIdioma(String idioma, String localizacion){
      Lmarca.setText(mensajes.getString("marca"));
      Lmodelo.setText(mensajes.getString("modelo"));
      Lcliente.setText(mensajes.getString("clienteVS"));

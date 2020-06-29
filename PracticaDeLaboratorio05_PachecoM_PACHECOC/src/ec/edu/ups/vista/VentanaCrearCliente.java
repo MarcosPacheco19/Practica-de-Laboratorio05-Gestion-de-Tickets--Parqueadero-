@@ -6,6 +6,8 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorCliente;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +22,9 @@ public class VentanaCrearCliente extends javax.swing.JFrame {
     
     //Controlador de Clientes
     private ControladorCliente controladorCliente;
+    
+    private Locale localizacion;
+    private ResourceBundle mensajes;
     /**
      * Creates new form VentanaCrearCliente
      */
@@ -32,6 +37,33 @@ public class VentanaCrearCliente extends javax.swing.JFrame {
         
         //Controlador
         this.controladorCliente = controladorCliente;
+    }
+
+    
+    public Locale getLocalizacion() {
+        return localizacion;
+    }
+
+    public void setLocalizacion(Locale localizacion) {
+        this.localizacion = localizacion;
+    }
+
+    public ResourceBundle getMensajes() {
+        return mensajes;
+    }
+
+    public void setMensajes(ResourceBundle mensajes) {
+        this.mensajes = mensajes;
+    }
+    
+    public void cambiarIdioma(String idioma, String localizacion){
+     Lcedula.setText(mensajes.getString("cedula"));
+     Ldireccion.setText(mensajes.getString("direccion"));
+     Lnombre.setText(mensajes.getString("nombre"));
+    Ltelefono.setText(mensajes.getString("telefono"));
+     bCancelar.setText(mensajes.getString("cancelar"));
+     bRegistrar.setText(mensajes.getString("registrarCliente"));
+     Ltitulo.setText(mensajes.getString("tituloVCC"));
     }
 
     /**
