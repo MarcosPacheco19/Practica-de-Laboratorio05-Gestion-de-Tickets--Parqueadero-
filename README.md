@@ -1,5 +1,6 @@
 # Practica-de-Laboratorio05-Gestion-de-Tickets--Parqueadero-
 Crear interfaces graficas de usuario empleando técnicas de modelado de objetos con estándares de internacionalización.
+
 ACTIVIDADES DESARROLLADAS
 1.	Estructurar las clases que conformaran el programa, así como su respectivos objetos y atributos.
 2.  Creación del modelo y DAO con sus respectivos métodos.
