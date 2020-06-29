@@ -56,6 +56,15 @@ public class Vehiculo {
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+    
     
     
     //hashcode y equals
