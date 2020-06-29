@@ -52,9 +52,7 @@ public class VentanaRegistroDeEntrada extends javax.swing.JFrame {
         //Ventanas
         this.ventanaCrearCliente = new VentanaCrearCliente(this, controladorCliente);
         this.ventanaCrearVehiculo = new VentanaCrearVehiculo(this, controladorVehiculo, controladorCliente);
-        
-        jPanel1.add(ventanaCrearCliente);
-        jPanel1.add(ventanaCrearVehiculo);
+      
         
     }
 
@@ -325,12 +323,7 @@ public class VentanaRegistroDeEntrada extends javax.swing.JFrame {
     private void btnuevoVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnuevoVehiculoActionPerformed
         ventanaCrearVehiculo.setVisible(true);
     }//GEN-LAST:event_btnuevoVehiculoActionPerformed
-
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {                                            
-        limpiar();
-        cargarDatosTablaVehiculos();
-
-    }         
+   
     
     private void btRegistrarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarTicketActionPerformed
         if (txtplaca.getText().equals("Seleccione un vehiculo")) {

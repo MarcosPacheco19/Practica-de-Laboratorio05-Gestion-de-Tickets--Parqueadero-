@@ -423,11 +423,7 @@ public class VentanaRegistroDeSalida extends javax.swing.JFrame {
         limpiar();
     }//GEN-LAST:event_btlimpiarActionPerformed
 
-
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {                                            
-        limpiar();
-        
-    }     
+ 
     
     public void limpiar() {
         txtcedula.setText("");

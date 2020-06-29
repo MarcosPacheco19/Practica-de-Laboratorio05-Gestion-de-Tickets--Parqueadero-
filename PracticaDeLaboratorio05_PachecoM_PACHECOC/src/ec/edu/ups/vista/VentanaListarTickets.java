@@ -258,11 +258,6 @@ public class VentanaListarTickets extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {                                            
-        limpiar();
-        cargarDatosTablaClientes();
-        
-    }  
         
    
     public void cargarDatosTablaClientes() {

@@ -69,10 +69,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaCrearVehiculo = new VentanaCrearVehiculo(ventanaRegistroDeEntrada, controladorVehiculo, controladorCliente);
         ventanaCrearCliente= new VentanaCrearCliente(ventanaRegistroDeEntrada, controladorCliente);
 
-        //Agregar las ventanas internas
-        jPanel1.add(ventanaListarTickets);
-        jPanel1.add(ventanaRegistroDeEntrada);
-        jPanel1.add(ventanaRegistroDeSalida);
         
         //mensajes
         localizacion = new Locale("es", "EC");
@@ -225,9 +221,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuIdioma.setText("Idioma");
 
         menuItemEspañol.setText("Español");
+        menuItemEspañol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEspañolActionPerformed(evt);
+            }
+        });
         menuIdioma.add(menuItemEspañol);
 
         menuItemIngles.setText("Ingles");
+        menuItemIngles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInglesActionPerformed(evt);
+            }
+        });
         menuIdioma.add(menuItemIngles);
 
         jMenuBar1.add(menuIdioma);
@@ -259,6 +265,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btListarTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarTicketsActionPerformed
         ventanaListarTickets.setVisible(true);
     }//GEN-LAST:event_btListarTicketsActionPerformed
+
+    private void menuItemEspañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEspañolActionPerformed
+       
+        localizacion = new Locale("es", "EC");
+        this.cambiarIdioma("es","EC");
+    }//GEN-LAST:event_menuItemEspañolActionPerformed
+
+    private void menuItemInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInglesActionPerformed
+        
+        localizacion = new Locale("en", "UK");
+        this.cambiarIdioma("en","UK");
+    }//GEN-LAST:event_menuItemInglesActionPerformed
 
     /**
      * @param args the command line arguments
